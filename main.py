@@ -24,7 +24,7 @@ async def on_voice_state_update(member, before, after):
     if before.channel != after.channel:
         if after.channel is not None and after.channel.id == int(VOICE_CHANNEL_ID):
             message = {
-                "message": "\n" + member.name + "・イン・ザ・ディスコード"
+                "message": "\n" + member.nick + "・イン・ザ・ディスコード"
             }
             requests.post(LINE_NOTIFY_API_URL, headers=HEADERS, data=message)
  
