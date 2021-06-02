@@ -23,8 +23,9 @@ async def on_voice_state_update(member, before, after):
     # So, it is necessary to catch only events that joining channel.
     if before.channel != after.channel:
         if after.channel is not None and after.channel.id == int(VOICE_CHANNEL_ID):
+            _name = member.nick if member.nick else member.name
             message = {
-                "message": "\n" + member.nick + "・イン・ザ・ディスコード"
+                "message": "\n" + _name + "・イン・ザ・ディスコード"
             }
             requests.post(LINE_NOTIFY_API_URL, headers=HEADERS, data=message)
  
